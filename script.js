@@ -1,8 +1,8 @@
-import robot from "./assets/robot.png";
-import user from "./assets/user.svg";
+import bot from "./assets/robot.png";
+import user from "./assets/user.png";
 
 const form = document.querySelector("form");
-const chatContainer = document.querySelector("#chat-container");
+const chatContainer = document.querySelector("#chat_container");
 
 let loadInterval;
 
@@ -39,15 +39,13 @@ function chatColumn(isAi, value, uniqueId) {
   return `
             <div class="wrapper ${isAi && "ai"}">
                 <div class="chat">
-                    <div className="profile">
+                    <div class="profile">
                         <img
-                            src="${isAi ? robot : user}"
-                            alt="${isAi ? "robot" : "user"}"
+                            src="${isAi ? bot : user}"
+                            alt="${isAi ? "bot" : "user"}"
                         />
                     </div>
-                    <div class="message" id=${uniqueId}>
-                        ${value}
-                    </div>
+                    <div class="message" id=${uniqueId}>${value}</div>
                 </div>
             </div>
         `;
@@ -72,3 +70,10 @@ const handleSubmit = async (e) => {
   const messageDiv = document.getElementById(uniqueId);
   loader(messageDiv);
 };
+
+form.addEventListener("submit", handleSubmit);
+form.addEventListener("keyup", (e) => {
+  if (e.keyCode === 13) {
+    handleSubmit(e);
+  }
+});

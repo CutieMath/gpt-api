@@ -66,11 +66,9 @@ body {
 }
 
 .profile {
-  width: 36px;
-  height: 36px;
+  width: 50px;
+  height: 50px;
   border-radius: 5px;
-
-  background: #5436DA;
 
   display: flex;
   justify-content: center;
@@ -78,7 +76,7 @@ body {
 }
 
 .ai .profile {
-  background: #10a37f;
+  background: none;
 }
 
 .profile img {
