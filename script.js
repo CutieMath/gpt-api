@@ -69,6 +69,28 @@ const handleSubmit = async (e) => {
   // check if bot is typing and passing in loader
   const messageDiv = document.getElementById(uniqueId);
   loader(messageDiv);
+
+  // get response from openAI
+  const response = await fetch("http://localhost:5000", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ prompt: data.get("prompt") }),
+  });
+
+  clearInterval(loadInterval);
+  messageDiv.innerHTML = "";
+
+  if (response.ok) {
+    const data = await response.json();
+    const parsedData = data.bot.trim();
+    typeText(messageDiv, parsedData);
+  } else {
+    const err = await response.text();
+    messageDiv.innerHTML = "Error, something went wrong...";
+    alert(err);
+  }
 };
 
 form.addEventListener("submit", handleSubmit);
