@@ -1,4 +1,4 @@
-import bot from "./assets/chatbot.png";
+import robot from "./assets/robot.png";
 import user from "./assets/user.svg";
 
 const form = document.querySelector("form");
@@ -24,4 +24,31 @@ function typeText(element, text) {
       clearInterval(interval);
     }
   }, 20);
+}
+
+// Unique ID for each message
+function generateUniqueId() {
+  const timestamp = Date.now();
+  const randomNumber = Math.random();
+  const hexadecimalString = randomNumber.toString(16);
+  return `id-${timestamp}-${hexadecimalString}`;
+}
+
+// Create column for the user and robot
+function chatColumn(isAi, value, uniqueId) {
+  return `
+            <div class="wrapper ${isAi && "ai"}">
+                <div class="chat">
+                    <div className="profile">
+                        <img
+                            src="${isAi ? robot : user}"
+                            alt="${isAi ? "robot" : "user"}"
+                        />
+                    </div>
+                    <div class="message" id=${uniqueId}>
+                        ${value}
+                    </div>
+                </div>
+            </div>
+        `;
 }
