@@ -52,3 +52,23 @@ function chatColumn(isAi, value, uniqueId) {
             </div>
         `;
 }
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const data = new FormData(form);
+
+  // user's chat
+  chatContainer.innerHTML += chatColumn(false, data.get("prompt"));
+  form.reset();
+
+  // robot's chat
+  const uniqueId = generateUniqueId();
+  chatContainer.innerHTML += chatColumn(true, "", uniqueId);
+
+  // make the window auto scroll
+  chatContainer.scrollTop = chatContainer.scrollHeight;
+
+  // check if bot is typing and passing in loader
+  const messageDiv = document.getElementById(uniqueId);
+  loader(messageDiv);
+};
