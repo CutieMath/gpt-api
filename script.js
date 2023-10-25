@@ -1,4 +1,4 @@
-import bot from "./assets/robot.png";
+import bot from "./assets/bot.png";
 import user from "./assets/user.png";
 
 const form = document.querySelector("form");
@@ -59,7 +59,7 @@ const handleSubmit = async (e) => {
   chatContainer.innerHTML += chatColumn(false, data.get("prompt"));
   form.reset();
 
-  // robot's chat
+  // bots's chat
   const uniqueId = generateUniqueId();
   chatContainer.innerHTML += chatColumn(true, "", uniqueId);
 
@@ -70,13 +70,13 @@ const handleSubmit = async (e) => {
   const messageDiv = document.getElementById(uniqueId);
   loader(messageDiv);
 
-  // get response from openAI
-  const response = await fetch("http://localhost:5000", {
+  // get response from payGPT
+  const response = await fetch("http://localhost:5000/run-script", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ prompt: data.get("prompt") }),
+    body: JSON.stringify({ query: data.get("prompt") }),
   });
 
   clearInterval(loadInterval);
@@ -84,7 +84,7 @@ const handleSubmit = async (e) => {
 
   if (response.ok) {
     const data = await response.json();
-    const parsedData = data.bot.trim();
+    const parsedData = data.result.trim();
     typeText(messageDiv, parsedData);
   } else {
     const err = await response.text();

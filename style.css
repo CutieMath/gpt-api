@@ -48,6 +48,7 @@ body {
 .wrapper {
   width: 100%;
   padding: 15px;
+  border-radius: 10px;
 }
 
 .ai {
@@ -71,8 +72,8 @@ body {
   border-radius: 5px;
 
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: start;
+  align-items: start;
 }
 
 .ai .profile {
@@ -83,6 +84,7 @@ body {
   width: 60%;
   height: 60%;
   object-fit: contain;
+  border-radius: 5px;
 }
 
 .message {
