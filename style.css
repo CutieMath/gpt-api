@@ -8,13 +8,13 @@
 }
 
 body {
-  background: #343541;
+  background: #fff;
 }
 
 #app {
   width: 100vw;
   height: 100vh;
-  background: #343541;
+  background: #fff;
 
   display: flex;
   flex-direction: column;
@@ -52,7 +52,7 @@ body {
 }
 
 .ai {
-  background: #40414F;
+  background: #EEF2FC;
 }
 
 .chat {
@@ -90,7 +90,7 @@ body {
 .message {
   flex: 1;
 
-  color: #dcdcdc;
+  color: #000;
   font-size: 20px;
 
   max-width: 100%;
@@ -118,7 +118,7 @@ form {
   max-width: 1280px;
   margin: 0 auto;
   padding: 10px;
-  background: #40414F;
+  background: #EEF2FC;
 
   display: flex;
   flex-direction: row;
@@ -130,7 +130,7 @@ form {
 textarea {
   width: 100%;
 
-  color: #fff;
+  color: #000;
   font-size: 18px;
 
   padding: 10px;
